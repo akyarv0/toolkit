@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux"; // 8. Asama useDispatch hookunu import ediyoruz. slicer içinde yazdığımız fonksiyonları dışarıda kullanmak için useDispatch hookunu kullanıyoruz.
+import { decrement, increment } from "./features/counterSlice";
+
+const App = () => {
+  //! const {value} = useSelector((state) => state.counter) şeklinde yazmamızın sebebi herhangi bir state destr yaparak onun valuesini alabilmek.
+
+  const dispatch = useDispatch(); // bu genel kullanım syntaxı.
+
+  const { value } = useSelector((state) => state.counter); //6. Aşama herhangi bir companentten state 'i çekip kullanmak için useSelector hookunu kullanıyoruz.
+
+  console.log(value); // artık state'imizi kullanabiliyoruz.
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>{value}</div>
+      <button onClick={() => dispatch(increment())} >Arttır</button> {/* 9. Aşama dispactch sevk etmek demek. bizim tüm fonskiyonlarımızı artık sevk ederek istediğimiz yerde kullanabiliriz. */}
+      <button onClick={() => dispatch(decrement())}>Azalt</button>
     </div>
   );
-}
+};
 
 export default App;
