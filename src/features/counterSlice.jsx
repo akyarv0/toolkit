@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"; //3. Aşama src içine slicerları içine ekleyeceğimiz bir features klasöru oluşturuyoruz. slicer kısayolunu kullanıp eklemeyi kendimiz de yapabiliriz dökumandan direkt almak da mümkün.
 
 const initialState = {
-  value: 0, // state'imizi slicer içinde tutuyoruz. istediğimiz yerden bu state ulaşabiliyoruz.
+  value: 0, //? state'imizi slicer içinde tutuyoruz. istediğimiz yerden bu state ulaşabiliyoruz.
 };
 
 const counterSlice = createSlice({
-  name: "counter",
-  initialState,
+  name: "counter", //? slicerin ismi
+  initialState,//?key ve value degerleri aynı olduğu için bu şekilde yazabiliyoruz.
   reducers: {
     //7.a Aşama yapmak istediğimiz olayların fonskiyonlarını  reducer içinde yazıyoruz. actionCreater yerini bunlar aldı. 
     increment: (state) => {
